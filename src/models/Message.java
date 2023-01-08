@@ -7,12 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 //このクラスはDTO(テーブルのデータの情報を覚えておくクラス)
 //EntityアノテーションはEntityクラスである（データベースのテーブル構造を表したオブジェクトである）
 //TableアノテーションはEntityクラスと対応するデータベースのテーブル名を指定する場合に使用する
 @Entity
+@NamedQueries({
+    @NamedQuery(
+            name = "getAllMessages",
+            query = "SELECT m FROM Message AS m ORDER BY m.id DESC"
+            )
+})
 @Table(name = "messages")
 public class Message {
     //IdアノテーションはEntityクラス内で定義した主キーに付与するもの
