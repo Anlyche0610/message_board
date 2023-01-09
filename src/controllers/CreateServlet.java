@@ -33,7 +33,7 @@ public class CreateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String _token = request.getParameter("_token");
         if(_token != null && _token.equals(request.getSession().getId())) {
-            //CSRF対策_tokenに値がセットされてなかったりセッションIDと値が異なたりしたらデータの登録ができないようにしている
+            //CSRF対策_tokenに値がセットされてなかったりセッションIDと値が異なったりしたらデータの登録ができないようにしている
             EntityManager em = DBUtil.createEntityManager();
             em.getTransaction().begin();
 
